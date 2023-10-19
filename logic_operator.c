@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * execute_command - entry point
- * args: arguement passed
+ * @args: arguement passed
  * Return: Returns -1
  */
 int execute_command(char *args[])
@@ -25,7 +25,7 @@ int execute_command(char *args[])
 		waitpid(child_pid, &status, 0);
 		if (WIFEXITED(status))
 		{
-			return WEXITSTATUS(status);
+			return (WEXITSTATUS(status));
 		}
 		else
 		{
@@ -37,8 +37,8 @@ int execute_command(char *args[])
 
 /**
  * parse_command - entry point
- * input: args passed
- * args: arguement passed
+ * @input: args passed
+ * @args: arguement passed
  * Return: Returns arg_count
  */
 int parse_command(char *input, char *args[])

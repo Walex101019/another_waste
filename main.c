@@ -4,7 +4,7 @@
  *
  * Return: Returns
  */
-int main()
+int main(void)
 {
 	char input[MAX_INPUT_LENGTH];
 	char *args[MAX_ARG_COUNT + 1];

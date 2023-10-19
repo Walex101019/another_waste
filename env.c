@@ -2,9 +2,8 @@
 /**
  * print_environment - entry point
  */
-void print_environment()
+void print_environment(void)
 {
-	extern char **environ;
 	char **env = environ;
 
 	while (*env)
