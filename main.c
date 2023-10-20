@@ -37,7 +37,7 @@ int main(void)
 		{
 			if (strchr(input, '|'))
 			{
-				run_piepline(args);
+				run_pipeline(args);
 			}
 			else
 			{
