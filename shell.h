@@ -13,6 +13,7 @@
 
 int parse_command(char *input, char *args[]);
 int execute_command(char *args[], int input_fd, int output_fd);
+char *find_command_in_path(const char *command);
 void print_environment(void);
 void run_pipeline(char *args[]);
 void display_prompt(void);

@@ -129,3 +129,33 @@ void run_pipeline(char *args[])
 		}
 	}
 }
+
+/**
+ * find_command_in_path - entry point
+ * @command: arguement passed
+ * Return: Returns NULL
+ */
+char *find_command_in_path(const char *command)
+{
+	char *path = getenv("PATH");
+	char *path_copy = strdup(path);
+	char *path_dir = strtok(path_copy, ":");
+	char *full_path;
+
+	while (path_dir != NULL)
+	{
+		full_path = (char *)malloc(strlen(path_dir) + strlen(command) + 2);
+		strcpy(full_path, path_dir);
+		strcat(full_path, "/");
+		strcat(full_path, command);
+		if (access(full_path, X_OK) == 0)
+		{
+			free(path_copy);
+			return (full_path);
+		}
+		free(full_path);
+		path_dir = strtok(NULL, ":");
+	}
+	free(path_copy);
+	return (NULL);
+}

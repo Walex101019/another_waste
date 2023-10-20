@@ -8,6 +8,7 @@ int main(void)
 {
 	char input[MAX_INPUT_LENGTH];
 	char *args[MAX_ARG_COUNT + 1];
+	char *path;
 	int arg_count;
 
 	while (1)
@@ -41,9 +42,19 @@ int main(void)
 			}
 			else
 			{
-				if (execute_command(args, STDIN_FILENO, STDOUT_FILENO) == -1)
+				path = find_command_in_path(args[0]);
+				if (path)
 				{
-					printf("Command not found: %s\n", args[0]);
+					args[0] = path;
+					if (execute_command(args, STDIN_FILENO, STDOUT_FILENO) == -1)
+					{
+						printf("Command execution failed: %s\n", args[0]);
+					}
+					free(path);
+				}
+				else
+				{
+					printf("command not found: %s\n", args[0]);
 				}
 			}
 		}
