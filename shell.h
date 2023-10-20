@@ -12,8 +12,9 @@
 #define MAX_ARG_COUNT 10
 
 int parse_command(char *input, char *args[]);
-int execute_command(char *args[]);
+int execute_command(char *args[], int input_fd, int output_fd);
 void print_environment(void);
+void run_pipeline(char *args[]);
 void display_prompt(void);
 void exit_shell(void);
 

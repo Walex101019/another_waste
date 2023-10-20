@@ -35,9 +35,16 @@ int main(void)
 		}
 		else
 		{
-			if (execute_command(args) == -1)
+			if (strchr(input, '|'))
 			{
-				printf("Command not found: %s\n", args[0]);
+				run_piepline(args);
+			}
+			else
+			{
+				if (execute_command(args, STDIN_FILENO, STDOUT_FILENO) == -1)
+				{
+					printf("Command not found: %s\n", args[0]);
+				}
 			}
 		}
 	}
