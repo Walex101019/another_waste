@@ -13,9 +13,9 @@
 
 int parse_command(char *input, char *args[]);
 int execute_command(char *args[]);
-void print_environment();
-void display_prompt();
-void exit_shell();
+void print_environment(void);
+void display_prompt(void);
+void exit_shell(void);
 
 
 extern char **environ;
